@@ -4,6 +4,7 @@ public class ObjectHit : MonoBehaviour
 {
     private void OnCollisionEnter(Collision other)
     {
-        //Debug.Log("Collision detected with: " + other.gameObject.name);
+        GetComponent<MeshRenderer>().material.color = Color.blue;
+        Debug.Log("Collision detected with: " + other.gameObject.name);
     }
 }
