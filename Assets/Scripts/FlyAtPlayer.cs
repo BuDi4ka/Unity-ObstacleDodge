@@ -2,13 +2,19 @@ using UnityEngine;
 
 public class FlyAtPlayer : MonoBehaviour
 {
-    [SerializeField] Transform player;
-    Vector3 playerPosition;
+    [SerializeField] Transform trigger;
+    Vector3 triggerPosition;
     [SerializeField] float speed = 0.1f;
-    
+
+    void Awake()
+    {
+        gameObject.SetActive(false);
+    }
+
     void Start()
     {
-        playerPosition = player.transform.position;
+        
+        triggerPosition = trigger.transform.position;
     }
 
     void Update()
@@ -19,7 +25,7 @@ public class FlyAtPlayer : MonoBehaviour
 
     void DestroyWhenReached()
     {
-        if (transform.position == playerPosition)
+        if (transform.position == triggerPosition)
         {
             Destroy(gameObject);
         }
@@ -28,6 +34,6 @@ public class FlyAtPlayer : MonoBehaviour
     void MoveToPlayer()
     {
         transform.position =
-        Vector3.MoveTowards(transform.position, playerPosition, speed * Time.deltaTime);
+        Vector3.MoveTowards(transform.position, triggerPosition, speed * Time.deltaTime);
     }
 }

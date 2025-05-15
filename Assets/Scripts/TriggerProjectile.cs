@@ -11,7 +11,14 @@ public class TriggerProjectile : MonoBehaviour
         {
             foreach (GameObject projectile in projectiles)
             {
-                projectile.SetActive(true);
+                if (projectile != null)
+                {
+                    projectile.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogWarning("Projectile reference is null.");
+                }
             }
             hasActived = true;
         }
